@@ -190,10 +190,10 @@ public extension CustomTextfield {
 	}
 }
 
-public struct BordedTextFieldStyle: @preconcurrency TextFieldStyle {
+public struct BordedTextFieldStyle: TextFieldStyle {
 	@Binding var color: Color
 	
-	@MainActor public func _body(configuration: TextField<Self._Label>) -> some View {
+	public func _body(configuration: TextField<Self._Label>) -> some View {
 		configuration
 			.padding(.vertical, 6)
 			.border(width: 2, edges: [.bottom], color: color)
