@@ -10,7 +10,15 @@ import RevenueCat
 import RevenueCatUI
 import SwiftUI
 
-public class RevenueManager: ObservableObject {
+public protocol RevenueRepository {
+	func getPackagePriceWithIdentifier(_ identifier: String) -> String
+	
+	func purchasePackageWithIdentifier(_ identifier: String) async -> Bool
+	
+	func isCustomerWithEntitlement(_ entitlement: String) async -> Result<Bool, Error>
+}
+
+public class RevenueManager: ObservableObject,RevenueRepository {
 	
 	///If you want to debug RevenueCat status set this modifier on content and pass your state showing variable
 	///.debugRevenueCatOverlay(isPresented: $displayPaywallDebug)
@@ -66,4 +74,25 @@ public class RevenueManager: ObservableObject {
 		}
 	}
 
+}
+
+
+public class RevenueManagerMock: RevenueRepository {
+	//TODO: cover failure and success cases
+	
+	public func getPackagePriceWithIdentifier(_ identifier: String) -> String {
+		return ""
+	}
+	
+	public func purchasePackageWithIdentifier(_ identifier: String) async -> Bool {
+		return true
+	}
+	
+	public func isCustomerWithEntitlement(_ entitlement: String) async -> Result<Bool, any Error> {
+		return .success(true)
+	}
+	
+	public init() {}
+	
+	
 }

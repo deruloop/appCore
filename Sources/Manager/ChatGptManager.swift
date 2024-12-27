@@ -7,6 +7,11 @@
 
 import Foundation
 
+public protocol ChatGptRepository {
+	func fetchChatGPTResponse(prompt: String, role: String) async -> String?
+}
+
+
 public struct ChatGptResponse: Decodable {
 	let id: String
 	let object: String
@@ -22,7 +27,7 @@ public struct ChatMessage: Decodable {
 	let content: String
 }
 
-public class ChatGptManager: ObservableObject {
+public class ChatGptManager: ObservableObject,ChatGptRepository {
 
 	private var apiKey: String
 	
@@ -59,6 +64,19 @@ public class ChatGptManager: ObservableObject {
 			print("Error fetching or parsing response: \(error.localizedDescription)")
 			return nil
 		}
+	}
+
+}
+
+
+public class ChatGptManagerMock: ChatGptRepository {
+	//TODO: cover failure and success cases
+	public init() {
+		
+	}
+	
+	public func fetchChatGPTResponse(prompt: String, role: String) async -> String? {
+		return ""
 	}
 
 }
