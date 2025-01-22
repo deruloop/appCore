@@ -199,6 +199,15 @@ public extension Notification {
 	}
 }
 
+//MARK: Measurement
+public extension Measurement {
+	func rounded(toPlaces places: Int) -> Measurement<UnitType> {
+		let multiplier = pow(10.0, Double(places))
+		let roundedValue = (value * multiplier).rounded() / multiplier
+		return Measurement(value: roundedValue, unit: unit)
+	}
+}
+
 //MARK: Date
 public extension Date {
 	func toString(_ format: AppDateFormat) -> String {
