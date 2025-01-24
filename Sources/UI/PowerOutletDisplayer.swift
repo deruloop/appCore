@@ -98,4 +98,5 @@ class PowerOutletManager {
 
 #Preview {
 	PowerOutletDisplayer(countryCode: "EU", font: .system(size: 15), primaryColor: Color.black, secondaryColor: Color.blue)
+	
 }
