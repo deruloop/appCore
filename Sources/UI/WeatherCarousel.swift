@@ -102,7 +102,7 @@ extension WeatherCarousel{
 					.frame(height: 80)
 					.padding(.leading, 4)
 					.padding(.horizontal, 8)
-					.background(Color(hex: "#DFDFDF"))
+					.background(design.backgroundColor.opacity(0.2))
 					.cornerRadius(8)
 					.zIndex(-1)
 					.offset(x: -10)

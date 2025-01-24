@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Combine
+import CoreLocation
 
 // MARK: - General
 
@@ -298,3 +299,17 @@ public extension View {
 	}
 }
 
+public extension CLLocation {
+	/// Get the country code (ISO 3166-1 alpha-2) for this CLLocation using async/await
+	/// - Returns: An optional string representing the country code, or `nil` if not available
+	func getCountryCode() async -> String? {
+		let geocoder = CLGeocoder()
+		
+		return await withCheckedContinuation { continuation in
+			geocoder.reverseGeocodeLocation(self) { placemarks, _ in
+				let countryCode = placemarks?.first?.isoCountryCode
+				continuation.resume(returning: countryCode)
+			}
+		}
+	}
+}
