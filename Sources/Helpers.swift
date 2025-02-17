@@ -217,6 +217,22 @@ public extension Date {
 		formatter.locale = Locale(identifier: "it_IT")
 		return formatter.string(from: self)
 	}
+	
+	func differenceInDaysFromToday() -> Int {
+		return differenceInDays(from: Date.now)
+	}
+	
+	func differenceInDays(from date: Date) -> Int {
+		let calendar = Calendar.current
+		
+		// Ensure the dates only have year, month, and day components (ignore time)
+		let startOfDayDate = calendar.startOfDay(for: date)
+		let startOfDayAnotherDate = calendar.startOfDay(for: self)
+		
+		// Calculate the difference in days
+		let components = calendar.dateComponents([.day], from: startOfDayDate, to: startOfDayAnotherDate)
+		return components.day ?? 0
+	}
 }
 
 public enum AppDateFormat: String {

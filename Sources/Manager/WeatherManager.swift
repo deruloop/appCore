@@ -37,15 +37,6 @@ public class WeatherManager: ObservableObject,WeatherRepository {
 		}
 	}
 	
-//	public func fetchDailyWeather(for location: CLLocation, from startDate: Date, to endDate: Date) async -> [DayWeather] {
-//		switch await fetchDailyWeatherWithError(for: location, from: startDate, to: endDate) {
-//		case .success(let weather):
-//			return weather
-//		case .failure:
-//			return []
-//		}
-//	}
-	
 	public func fetchDailyWeather(for location: CLLocation, from startDate: Date, to endDate: Date) async ->  Result<[DayWeather],Error> {
 		do {
 			// Ottieni il meteo per la posizione
