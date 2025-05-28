@@ -68,6 +68,7 @@ class PowerOutletManager {
 		"IT": [PowerOutlet(type: "Type C", systemImageName: "poweroutlet.type.c.square"),
 			   PowerOutlet(type: "Type L", systemImageName: "poweroutlet.type.l.square")],
 		"UK": [PowerOutlet(type: "Type G", systemImageName: "poweroutlet.type.g.square")],
+		"GB": [PowerOutlet(type: "Type G", systemImageName: "poweroutlet.type.g.square")],
 
 		// Asia
 		"JP": [PowerOutlet(type: "Type A", systemImageName: "poweroutlet.type.a.square"),
