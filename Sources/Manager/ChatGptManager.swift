@@ -54,7 +54,7 @@ public class ChatGptManager: ObservableObject,ChatGptRepository {
 
 		// NOTE: Use a known-valid model for this endpoint. Replace with the one available to your account if needed.
 		let body: [String: Any] = [
-			"model": "gpt-5-nano",
+			"model": "gpt-4.1-nano",
 			"messages": [
 				["role": "system", "content": role],
 				["role": "user", "content": prompt]
